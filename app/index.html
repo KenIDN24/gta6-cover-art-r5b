@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VICE FRAME — GTA-style Cover Studio</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">VICE&nbsp;FRAME</span>
+    <span class="brand-sub">cover studio</span>
+  </div>
+  <div class="top-actions">
+    <label class="size-pick">Canvas
+      <select id="sizeSelect">
+        <option value="poster">Poster · 1200 × 1800</option>
+        <option value="square">Square · 1440 × 1440</option>
+        <option value="story">Story · 1080 × 1920</option>
+        <option value="wide" selected>Wide · 1920 × 1080</option>
+      </select>
+    </label>
+    <button id="exportBtn" class="btn primary" type="button">Export PNG</button>
+    <button id="exportAllBtn" class="btn ghost" type="button">Export all sizes</button>
+  </div>
+</header>
+
+<div class="workspace">
+  <aside class="panel">
+    <section>
+      <h2>1 · Photos</h2>
+      <label class="upload-btn">
+        <input id="fileInput" type="file" accept="image/*" multiple hidden>
+        ＋ Add your photos
+      </label>
+      <p class="hint">Photos stay on your machine — nothing is uploaded.
+        Or start with the sample cast:</p>
+      <div id="castStrip" class="cast-strip"></div>
+    </section>
+
+    <section>
+      <h2>2 · Layout</h2>
+      <div id="layoutGrid" class="layout-grid"></div>
+    </section>
+
+    <section>
+      <h2>3 · Colour grade</h2>
+      <div id="gradeGrid" class="grade-grid"></div>
+      <div class="toggles">
+        <label><input type="checkbox" id="optTint" checked> Tint wash</label>
+        <label><input type="checkbox" id="optGrain" checked> Film grain</label>
+        <label><input type="checkbox" id="optVignette" checked> Vignette</label>
+      </div>
+    </section>
+
+    <section>
+      <h2>4 · Lettering</h2>
+      <label class="field">Title style
+        <select id="titleStyle">
+          <option value="chrome" selected>Chrome</option>
+          <option value="neon">Neon script</option>
+          <option value="outline">Outline block</option>
+          <option value="retro">Retro wave</option>
+        </select>
+      </label>
+      <label class="field">Title
+        <input id="titleText" type="text" value="VICE FRAME" maxlength="24">
+      </label>
+      <label class="field">Subtitle
+        <input id="subtitleText" type="text" value="LEONIDA HEAT" maxlength="40">
+      </label>
+      <label class="field">Billing block
+        <input id="billingText" type="text" maxlength="90"
+          value="A VICE FRAME PICTURE · STARRING THE CAST OF LEONIDA · SHOT ON LOCATION IN VICE CITY">
+      </label>
+    </section>
+
+    <section>
+      <h2>5 · Selected panel</h2>
+      <p class="hint" id="panelInfo">Click a panel on the cover, then drag
+        the photo inside it. Pick a photo below to swap it in.</p>
+      <label class="field">Role tag
+        <input id="panelRole" type="text" maxlength="18" placeholder="e.g. THE DRIVER">
+      </label>
+      <label class="field">Zoom
+        <input id="panelZoom" type="range" min="1" max="3" step="0.01" value="1">
+      </label>
+      <div class="row-btns">
+        <button id="faceBtn" class="btn small" type="button">Face-centre</button>
+        <button id="resetBtn" class="btn small" type="button">Reset frame</button>
+      </div>
+    </section>
+  </aside>
+
+  <main class="stage-wrap">
+    <div class="stage-box">
+      <canvas id="stage" width="1280" height="720"></canvas>
+    </div>
+    <div id="strip" class="strip"></div>
+    <p id="statusLine" class="status">Sample cast loaded — pick a layout and make it yours.</p>
+  </main>
+</div>
+
+<canvas id="shotCanvas" hidden></canvas>
+<script src="app.js"></script>
+</body>
+</html>

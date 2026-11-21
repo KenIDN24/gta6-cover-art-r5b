@@ -1,0 +1,150 @@
+/* VICE FRAME — dark Vice-neon studio theme. */
+:root {
+  --bg: #0a0614;
+  --panel: #150d26;
+  --panel-2: #1d1233;
+  --line: #332154;
+  --ink: #f3ecff;
+  --dim: #a793c9;
+  --pink: #ff2e88;
+  --cyan: #25d5f5;
+  --sun: #ffb347;
+  --radius: 12px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background:
+    radial-gradient(1100px 500px at 85% -10%, rgba(255, 46, 136, .16), transparent 60%),
+    radial-gradient(900px 480px at -10% 110%, rgba(37, 213, 245, .12), transparent 60%),
+    var(--bg);
+  color: var(--ink);
+  font: 14px/1.45 "Segoe UI", system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 12px 20px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(16, 9, 30, .85); backdrop-filter: blur(6px);
+  position: sticky; top: 0; z-index: 5;
+}
+.brand { display: flex; align-items: baseline; gap: 10px; }
+.brand-mark {
+  font: 900 24px/1 "Arial Black", "Segoe UI", sans-serif; letter-spacing: 1px;
+  background: linear-gradient(180deg, #fff 15%, #ffd7ec 38%, #ff2e88 55%, #7a1fa2 78%, #25d5f5 105%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.brand-sub { color: var(--sun); letter-spacing: 4px; font-size: 11px; text-transform: uppercase; }
+.top-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.size-pick { color: var(--dim); display: flex; align-items: center; gap: 8px; }
+
+select, input[type="text"] {
+  background: var(--panel-2); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 8px; padding: 7px 9px; font: inherit;
+}
+select:focus, input[type="text"]:focus { outline: 2px solid var(--cyan); outline-offset: 0; }
+.btn {
+  border: 1px solid var(--line); background: var(--panel-2); color: var(--ink);
+  border-radius: 999px; padding: 8px 16px; font: 600 13px inherit; cursor: pointer;
+}
+.btn:hover { border-color: var(--cyan); }
+.btn.primary {
+  background: linear-gradient(90deg, var(--pink), #ff7a3d); border: none; color: #fff;
+  box-shadow: 0 4px 18px rgba(255, 46, 136, .35);
+}
+.btn.small { padding: 5px 12px; font-size: 12px; }
+
+.workspace {
+  display: grid; grid-template-columns: 302px 1fr; gap: 18px;
+  padding: 18px 20px 26px; max-width: 1560px; margin: 0 auto;
+}
+.panel {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 6px 16px 14px; align-self: start;
+}
+.panel section { padding: 12px 0 14px; border-bottom: 1px dashed var(--line); }
+.panel section:last-child { border-bottom: none; }
+.panel h2 {
+  margin: 0 0 10px; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--cyan);
+}
+.hint { color: var(--dim); font-size: 12px; margin: 8px 0; }
+.field { display: block; margin: 9px 0; color: var(--dim); font-size: 12px; }
+.field select, .field input[type="text"] { width: 100%; margin-top: 4px; color: var(--ink); }
+.field input[type="range"] { width: 100%; margin-top: 6px; accent-color: var(--pink); }
+
+.upload-btn {
+  display: block; text-align: center; cursor: pointer;
+  border: 1.5px dashed var(--pink); color: #ffd7ec; border-radius: 10px;
+  padding: 10px; font-weight: 600;
+}
+.upload-btn:hover { background: rgba(255, 46, 136, .1); }
+.cast-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.cast-strip button {
+  padding: 0; border: 2px solid transparent; border-radius: 8px; overflow: hidden;
+  background: none; cursor: pointer; line-height: 0;
+}
+.cast-strip button:hover { border-color: var(--cyan); }
+.cast-strip img { width: 100%; height: 52px; object-fit: cover; display: block; }
+.cast-strip span {
+  display: block; line-height: 1.2; font-size: 10px; color: var(--dim);
+  padding: 3px 0 4px; background: var(--panel-2); text-align: center;
+}
+
+.layout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.layout-grid button {
+  background: var(--panel-2); color: var(--ink); border: 1px solid var(--line);
+  border-radius: 8px; padding: 7px 8px; font: 600 11.5px inherit; cursor: pointer;
+  text-align: left;
+}
+.layout-grid button.active { border-color: var(--pink); color: #ffd7ec; box-shadow: inset 0 0 0 1px var(--pink); }
+.grade-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.grade-grid button {
+  border: 1px solid var(--line); border-radius: 8px; padding: 0; cursor: pointer;
+  overflow: hidden; background: none; line-height: 0; text-align: center;
+}
+.grade-grid button.active { border-color: var(--sun); box-shadow: 0 0 0 1.5px var(--sun); }
+.grade-grid i { display: block; height: 26px; }
+.grade-grid span { display: block; line-height: 1.25; font-size: 10px; color: var(--ink); padding: 3px 1px 4px; background: var(--panel-2); }
+.toggles { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; color: var(--dim); font-size: 12.5px; }
+.toggles input { accent-color: var(--pink); }
+.row-btns { display: flex; gap: 8px; margin-top: 6px; }
+
+.stage-wrap { min-width: 0; }
+.stage-box {
+  background: #05030a; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 14px; display: flex; justify-content: center;
+}
+#stage {
+  max-width: 100%; max-height: 72vh; width: auto; height: auto;
+  border-radius: 4px; box-shadow: 0 18px 50px rgba(0, 0, 0, .55);
+  cursor: grab; touch-action: none;
+}
+#stage:active { cursor: grabbing; }
+.strip { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.strip figure {
+  margin: 0; width: 86px; cursor: pointer; border: 2px solid transparent;
+  border-radius: 9px; overflow: hidden; background: var(--panel);
+}
+.strip figure.active { border-color: var(--cyan); }
+.strip img { width: 100%; height: 58px; object-fit: cover; display: block; }
+.strip figcaption {
+  font-size: 10px; color: var(--dim); text-align: center; padding: 3px 2px 4px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.status { color: var(--dim); font-size: 12.5px; margin-top: 10px; }
+
+/* Shot mode: only the cover, full-bleed (used for the entry screenshots). */
+body.shot { overflow: hidden; background: #000; }
+body.shot .topbar, body.shot .workspace { display: none; }
+body.shot #shotCanvas {
+  display: block; position: fixed; inset: 0; width: 100vw; height: 100vh;
+  object-fit: contain; background: #000;
+}
+
+@media (max-width: 900px) {
+  .workspace { grid-template-columns: 1fr; }
+  .brand-mark { font-size: 19px; }
+}
